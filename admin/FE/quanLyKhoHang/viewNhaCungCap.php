@@ -1,15 +1,27 @@
 <?php include 'header.html'; ?>
 
       <div class="container">
-        <h1>Danh sách nhân viên đang làm</h1>       
+      <h1>Quản lý nhà cung cấp</h1>
+
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li><a href="addNhaCungCap.php">Thêm nhà cung cấp</a></li>
+                    <li class="active"><a href="viewNhaCungCap.php">Xem danh sách nhà cung cấp</a></li>
+
+
+                </ul>
+            </div>
+        </nav>
+        <h2>Đang cung cấp</h2>       
             <table class="table table-striped">
                 <thead class="thead-style">
                 <tr>
                  
-                    <th>Họ và tên</th>
+                    <th>Mã NCC</th>
+                    <th>Tên NCC</th>
                     <th>Số điện thoại</th>
                     <th>Địa chỉ</th>
-                    <th>Vị trí</th>
                     <th>Thao tác</th>
                 </tr>
                 </thead>
@@ -21,7 +33,7 @@
                     require_once '../../../php/connect.php';
 
 
-                    $view_sql="SELECT * FROM nhanvien WHERE trangthai = 1";
+                    $view_sql="SELECT * FROM nhacungcap WHERE trangthai = 1";
 
                     $result = mysqli_query($conn, $view_sql);
                     
@@ -32,18 +44,13 @@
 
                         <tr>
                             
-                            <td><?php echo $r['hoten'] ?></td>
+                            <td><?php echo $r['manhacungcap'] ?></td>
+                            <td><?php echo $r['tennhacungcap'] ?></td>
                             <td><?php echo $r['sdt'] ?></td>
                             <td><?php echo $r['diachi'] ?></td>
-                            <td><?php
-                            $vt = $r['vitri'];
-                            $search_sql = "SELECT * FROM nhomquyen WHERE id = $vt";
-                            $result2 = mysqli_query($conn, $search_sql);
-                            $r2 = mysqli_fetch_assoc($result2);
-                             echo $r2['tennhomquyen'];
-                             ?></td>
-                            <td><a href="editNhanVien.php?sid=<?php echo $r['id'] ?>" class="btn btn-info">Sửa</a>
-                             <a onclick="return confirm('Bạn có muốn xóa nhân viên này không?')" href="../../BE/quanLyNhanVien/deleteNhanVien.php?sid=<?php echo $r['id'] ?>" class="btn btn-danger">Xóa</a></td>
+                            <td><a href="viewChiTietNhaCungCap.php?sid=<?php echo $r['id'] ?>" >Chi tiết</a>
+                                <a href="editNhaCungCap.php?sid=<?php echo $r['id'] ?>" class="btn btn-info">Sửa</a>
+                             <a onclick="return confirm('Bạn có muốn dừng làm việc với nhà cung cấp này không?')" href="../../BE/quanLyKhoHang/deleteNhaCungCap.php?sid=<?php echo $r['id'] ?>" class="btn btn-danger">Dừng</a></td>
                         </tr>
                         <?php
                     }
@@ -55,16 +62,17 @@
 
     </div>
 
+
     <div class="container">
-        <h1>Danh sách nhân viên đã nghỉ</h1>       
+        <h2>Dừng cung cấp</h2>       
             <table class="table table-striped">
                 <thead class="thead-style">
                 <tr>
                  
-                    <th>Họ và tên</th>
+                    <th>Mã NCC</th>
+                    <th>Tên NCC</th>
                     <th>Số điện thoại</th>
                     <th>Địa chỉ</th>
-                    <th>Vị trí</th>
                     <th>Thao tác</th>
                 </tr>
                 </thead>
@@ -76,7 +84,7 @@
                     require_once '../../../php/connect.php';
 
 
-                    $view_sql="SELECT * FROM nhanvien WHERE trangthai = 0";
+                    $view_sql="SELECT * FROM nhacungcap WHERE trangthai = 0";
 
                     $result = mysqli_query($conn, $view_sql);
                     
@@ -87,17 +95,12 @@
 
                         <tr>
                             
-                            <td><?php echo $r['hoten'] ?></td>
+                            <td><?php echo $r['manhacungcap'] ?></td>
+                            <td><?php echo $r['tennhacungcap'] ?></td>
                             <td><?php echo $r['sdt'] ?></td>
                             <td><?php echo $r['diachi'] ?></td>
-                            <td><?php
-                            $vt = $r['vitri'];
-                            $search_sql = "SELECT * FROM nhomquyen WHERE id = $vt";
-                            $result2 = mysqli_query($conn, $search_sql);
-                            $r2 = mysqli_fetch_assoc($result2);
-                             echo $r2['tennhomquyen'];
-                             ?></td>
-                            <td><a href="../../BE/quanLyNhanVien/returnNhanVien.php?sid=<?php echo $r['id'] ?>" class="btn btn-info">Hoạt động trở lại</a>
+                            <td><a href="viewChiTietNhaCungCap.php?sid=<?php echo $r['id'] ?>" >Chi tiết</a>
+                                <a href="../../BE/quanLyKhoHang/returnNhaCungCap.php?sid=<?php echo $r['id'] ?>" class="btn btn-info">Trở lại</a>
                             </td>
                         </tr>
                         <?php
@@ -108,6 +111,7 @@
             </table>
 
 
+    </div>
     <style>
     .thead-style {
         background-color: black;

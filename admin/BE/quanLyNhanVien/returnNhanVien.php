@@ -4,7 +4,7 @@ $nvid = $_GET['sid'];
 //ket noi csdl
 require_once '../../../php/connect.php';
 
-$update_sql = "UPDATE nhanvien SET trangthai = 0 WHERE id = $nvid";
+$update_sql = "UPDATE nhanvien SET trangthai = 1 WHERE id = $nvid";
 
 if (mysqli_query($conn, $update_sql))
 {

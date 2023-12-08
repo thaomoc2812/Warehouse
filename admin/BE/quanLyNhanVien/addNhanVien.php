@@ -20,6 +20,25 @@ if (!$hoten || !$diachi || !$sdt || !$vitri)
         exit;
     }
 
+    $search = "SELECT * FROM nhanvien WHERE (sdt = '$sdt') ";
+
+    $query = mysqli_query($conn, $search);
+    $q=0;
+    while ($r0 = mysqli_fetch_assoc($query))
+    {
+        if($r0['sdt'] == $sdt)
+        {
+            $q = 1;
+        }
+        
+    };
+    if($q == 1)
+    {
+        echo "Số điện thoại đã tồn tại <a href='javascript: history.go(-1)'>Trở lại</a>";
+        exit;
+    }
+
+    
     $search_sql = "SELECT * FROM nhomquyen WHERE tennhomquyen = '$vitri'";
     $result = mysqli_query($conn, $search_sql);
     if($r = mysqli_fetch_assoc($result))
@@ -28,7 +47,7 @@ if (!$hoten || !$diachi || !$sdt || !$vitri)
 
 
 $addsql = "INSERT INTO nhanvien
-(hoten,sdt, diachi, vitri) VALUES ('$hoten','$sdt','$diachi',$vt)";
+(hoten,sdt, diachi, vitri, trangthai) VALUES ('$hoten','$sdt','$diachi',$vt,1)";
 
 
 

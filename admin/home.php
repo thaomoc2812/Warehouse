@@ -84,15 +84,15 @@
         <li class="" id="roomhassubopen"><a href="#" onclick="memberExpand(2)"><i class="entypo-quote"></i><span>Quản lý kho hàng</span></a>
 
           <ul id="roomExpand">
+          <li><a href="./FE/quanLyKhoHang/phanLoaiSanPham.php"><span>Phân loại sản phẩm</span></a></li>
+            <li><a href="./FE/quanLyKhoHang/quanLyDanhMuc.php"><span>Quản lý danh mục</span></a></li>
+            <li><a href="./FE/quanLyKhoHang/quanLyNhaCungCap.php"><span>Quản lý nhà cung cấp</span></a></li>
+            <li><a href="./FE/quanLyKhoHang/quanLyLoHang.php"><span>Quản lý lô hàng</span></a></li>
             <li><a href="./FE/quanLyKhoHang/addSanPham.php"><span>Thêm sản phẩm</span></a></li>
             <li><a href="./FE/quanLyKhoHang/viewSanPham.php"><span>Xem danh sách sản phẩm</span></a></li>
             <li><a href="./FE/quanLyKhoHang/searchSanPhamFirst.php"><span>Tìm kiếm sản phẩm</span></a></li>
-            <li><a href="./FE/quanLyKhoHang/phanLoaiSanPham.php"><span>Phân loại sản phẩm</span></a></li>
-            <li><a href="./FE/quanLyKhoHang/quanLyDanhMuc.php"><span>Quản lý danh mục</span></a></li>
             <li><a href="./FE/quanLyKhoHang/quanLySoLuongTonKho.php"><span>Quản lý số lượng tồn kho</span></a></li>
             <li><a href="./FE/quanLyKhoHang/quanLyGiamGia.php"><span>Quản lý giảm giá</span></a></li>
-            <li><a href="./FE/quanLyKhoHang/quanLyLoHang.php"><span>Quản lý lô hàng</span></a></li>
-            <li><a href="./FE/quanLyKhoHang/quanLyNhaCungCap.php"><span>Quản lý nhà cung cấp</span></a></li>
             <li><a href="./FE/quanLyKhoHang/quanLyDanhGia.php"><span>Quản lý đánh giá</span></a></li>
             <li><a href="./FE/quanLyKhoHang/baoCaoThongKe.php"><span>Báo cáo thống kê</span></a></li>
           
