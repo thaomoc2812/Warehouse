@@ -27,14 +27,22 @@
 
                         //ket noi csdl
                         require_once '../../../php/connect.php';
-
+                        function convertToNonAccent($str) {
+                            $str = iconv('UTF-8', 'ASCII//IGNORE', $str);
+                            $str = preg_replace('/[^a-zA-Z0-9]/', '', $str); // Loại bỏ các ký tự không phải chữ cái hoặc số
+                            return $str;
+                        }
+                        
+                        // Sử dụng hàm
+                       
+                        $chuoiKhongDau = convertToNonAccent($key);
 
 
                         $search_sql = "SELECT * FROM nhanvien WHERE 
-                        (hoten LIKE '%$key%')
-                        OR (diachi LIKE '%$key%')
-                        OR (sdt LIKE '%$key%')
-                        OR (vitri LIKE '%$key%')
+                        (hoten LIKE '%$chuoiKhongDau%')
+                        OR (diachi LIKE '%$chuoiKhongDau%')
+                        OR (sdt LIKE '%$chuoiKhongDau%')
+                        OR (vitri LIKE '%$chuoiKhongDau%')
                         ";
 
 

@@ -6,7 +6,7 @@
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="addLoaiSanPham.php">Thêm loại sản phẩm</a></li>
+        <li class="active"><a href="addLoaiSanPham.php">Thêm mã khuyến mại</a></li>
         <li><a href="viewLoaiSanPham.php">Xem danh sách loại sản phẩm</a></li>
 
 

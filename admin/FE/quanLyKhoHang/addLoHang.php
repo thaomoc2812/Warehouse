@@ -8,6 +8,7 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="addLoHang.php">Thêm lô hàng</a></li>
                 <li><a href="viewLoHang.php">Xem danh sách lô hàng</a></li>
+                <li><a href="nhapKho.php">Nhập kho</a></li>
 
 
             </ul>
@@ -25,7 +26,7 @@
                 require_once '../../../php/connect.php';
 
 
-                $view_sql1 = "SELECT * FROM nhacungcap";
+                $view_sql1 = "SELECT * FROM nhacungcap WHERE trangthai = 1";
                 $result1 = mysqli_query($conn, $view_sql1);
                 while ($r1 = mysqli_fetch_assoc($result1)) {
                 ?>
@@ -34,24 +35,18 @@
             </select><br>
         </div>
         <div class="form-group">
-            <label for="manhacungcap">Mã lô hàng</label>
-            <input type="text" id="manhacungcap" class="form-control" name="manhacungcap">
+            <label for="malohang">Mã lô hàng</label>
+            <input type="text" id="malohang" class="form-control" name="malohang">
         </div>
 
         <div class="form-group">
-            <label for="soluong">Số lượng</label>
-            <input type="int" id="soluong" class="form-control" name="soluong">
-        </div>
-
-        <div class="form-group">
-            <label for="gianhapvao">Giá nhập vào</label>
-            <input type="int" id="gianhapvao" class="form-control" name="gianhapvao">
+            <label for="ngaynhaphang">Ngày nhập hàng</label>
+            <input type="date" id="ngaynhaphang" class="form-control" name="ngaynhaphang" value = "<?php echo date("Y-m-d");?>" readonly>
         </div>
         <div class="form-group">
-            <label for="giabanra">Giá bán ra</label>
-            <input type="text" id="giabanra" class="form-control" name="giabanra">
+            <label for="tennhanvien">Nhân viên</label>
+            <input type="text" id="tennhanvien" class="form-control" name="tennhanvien" value = "admin" readonly >
         </div>
-
 
         <button type="submit" class="btn btn-primary">Thêm</button>
 

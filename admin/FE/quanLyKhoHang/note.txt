@@ -1,0 +1,45 @@
+ <div class="form-group">
+                <label for="malohang">Lô hàng</label><br>
+                <select id="malohang" name="malohang" style="width: 30%; height: 30px;">
+                    <?php //ket noi csdl
+
+                    require_once '../../../php/connect.php';
+
+                    $today = date("Y-m-d");
+                    $view_sql1 = "SELECT * FROM lohang WHERE ngaynhaphang = '$today'";
+                    $result1 = mysqli_query($conn, $view_sql1);
+                    while ($r1 = mysqli_fetch_assoc($result1)) {
+                    ?>
+                        <option><?php echo  $r1['malohang']?></option><br><?php
+                    } ?>
+                </select><br>
+            </div>
+
+
+               <div class="form-group">
+            <label for="giabansi">Giá bán sỉ</label>
+            <input type="int" id="giabansi" name="giabansi" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="giabanle">Giá bán lẻ</label>
+            <input type="int" id="giabanle" name="giabanle" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="soluong">Số lượng</label>
+            <input type="int" id="soluong" name="soluong" class="form-control">
+        </div>
+
+                    <select id="makhuyenmai" name="makhuyenmai" style = "width: 30%; height: 30px;">
+                <?php //ket noi csdl
+
+                require_once '../../../php/connect.php';
+
+
+                $view_sql1 = "SELECT * FROM phanloaisanpham";
+                $result1 = mysqli_query($conn, $view_sql1);
+                while ($r1 = mysqli_fetch_assoc($result1)) {
+                ?>
+                    <option><?php echo  $r1['loaisanpham'] ?> </option><br><?php
+                                                                        } ?>
+            </select><br>

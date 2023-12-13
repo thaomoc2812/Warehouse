@@ -92,7 +92,7 @@
             <li><a href="./FE/quanLyKhoHang/viewSanPham.php"><span>Xem danh sách sản phẩm</span></a></li>
             <li><a href="./FE/quanLyKhoHang/searchSanPhamFirst.php"><span>Tìm kiếm sản phẩm</span></a></li>
             <li><a href="./FE/quanLyKhoHang/quanLySoLuongTonKho.php"><span>Quản lý số lượng tồn kho</span></a></li>
-            <li><a href="./FE/quanLyKhoHang/quanLyGiamGia.php"><span>Quản lý giảm giá</span></a></li>
+            <li><a href="./FE/quanLyKhoHang/quanLyKhuyenMai.php"><span>Quản lý khuyến mại</span></a></li>
             <li><a href="./FE/quanLyKhoHang/quanLyDanhGia.php"><span>Quản lý đánh giá</span></a></li>
             <li><a href="./FE/quanLyKhoHang/baoCaoThongKe.php"><span>Báo cáo thống kê</span></a></li>
           

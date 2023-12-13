@@ -8,6 +8,7 @@
               <div class="list-group">
                 <a href="addLoHang.php" class="list-group-item">Thêm lô hàng</a>
                 <a href="viewLoHang.php" class="list-group-item">Xem danh sách lô hàng</a>
+                <a href="nhapKho.php" class="list-group-item">Nhập kho</a>
               
               </div>
           
