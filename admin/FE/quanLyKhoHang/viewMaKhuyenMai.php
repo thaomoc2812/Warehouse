@@ -6,7 +6,7 @@
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <ul class="nav navbar-nav">
-                <li><a href="addMaKhuyenMai.php?makhuyenmai=<?php echo $makhuyenmai ?>&giam=<?php echo $giam ?>&ngaybatdau=<?php echo $ngaybatdau ?>&ngayketthuc=<?php echo $ngayketthuc ?>">Thêm mã khuyến mại</a></li>
+                <li><a href="addMaKhuyenMai.php?makhuyenmai=<?php echo "." ?>&giam=<?php echo "." ?>&ngaybatdau=<?php echo "." ?>&ngayketthuc=<?php echo "." ?>&key1=<?php echo "" ?>&key2=<?php echo "" ?>&key3=<?php echo "" ?>">Thêm mã khuyến mại</a></li>
                 <li class="active"><a href="viewMaKhuyenMai.php">Xem danh sách mã khuyến mại</a></li>
 
 
@@ -15,7 +15,63 @@
     </nav>
 
 
+    <h2>Mã khuyến mại đang hoạt động</h2>
+    <table class="table table-striped">
+        <thead class="thead-style">
+            <tr>
 
+                <th>Mã khuyến mại</th>
+                <th>Giảm (%)</th>
+                <th>Ngày bắt đầu</th>
+                <th>Ngày kết thúc</th>
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <?php
+
+            //ket noi csdl
+            require_once '../../../php/connect.php';
+            $today = date("Y-m-d");
+
+            $view_sql1 = "SELECT * FROM thongtinkhuyenmai WHERE 
+            (((MONTH(ngayketthuc) = MONTH('$today') AND DAY(ngayketthuc) > DAY('$today')) OR MONTH(ngayketthuc) > MONTH('$today')))
+            AND
+            (((MONTH(ngaybatdau) = MONTH('$today') AND DAY(ngaybatdau) <= DAY('$today')) OR MONTH(ngaybatdau) < MONTH('$today')))
+            ";
+
+
+
+
+            $result1 = mysqli_query($conn, $view_sql1);
+
+
+            while ($r1 = mysqli_fetch_assoc($result1)) {
+            ?>
+
+                <tr>
+
+                    <td><?php echo $r1['makhuyenmai'] ?></td>
+                    <td><?php echo $r1['giam'] ?></td>
+                    <td><?php echo $r1['ngaybatdau'] ?></td>
+                    <td><?php echo $r1['ngayketthuc'] ?></td>
+
+                    <td><a href="viewChiTietMaKhuyenMaiDangChay.php?sid=<?php echo $r1['id'] ?>&key=<?php echo "" ?>">Chi tiết</a>
+
+                        <a onclick="return confirm('Vô hiệu hóa mã khuyến mại?')" href="../../BE/quanLyKhoHang/stopMaKhuyenMai.php?makhuyenmai=<?php echo $r1['makhuyenmai'] ?>" class="btn btn-danger">Dừng</a>
+
+                    </td>
+                </tr>
+            <?php
+            }
+            ?>
+
+        </tbody>
+    </table>
+
+
+    <h2>Mã khuyến mại chưa hoạt động</h2>
     <table class="table table-striped">
         <thead class="thead-style">
             <tr>
@@ -35,7 +91,10 @@
             require_once '../../../php/connect.php';
 
 
-            $view_sql1 = "SELECT * FROM thongtinkhuyenmai";
+            $view_sql1 = "SELECT * FROM thongtinkhuyenmai WHERE 
+            ((MONTH(ngaybatdau) = MONTH('$today') AND DAY(ngaybatdau) > DAY('$today')) OR MONTH(ngaybatdau) > MONTH('$today'))
+            ";
+
 
             $result1 = mysqli_query($conn, $view_sql1);
 
@@ -49,13 +108,59 @@
                     <td><?php echo $r1['giam'] ?></td>
                     <td><?php echo $r1['ngaybatdau'] ?></td>
                     <td><?php echo $r1['ngayketthuc'] ?></td>
-                    
-                    <td><a href="viewChiTietSanPham.php?sid=<?php echo $r1['id'] ?>">Chi tiết</a>
-                        <a href="editSanPham.php?sid=<?php echo $r1['id'] ?>" class="btn btn-info">Sửa</a>
 
-                        <a onclick="return confirm('Sản phẩm này chỉ có thể xóa khi chưa nhập kho?')" href="../../BE/quanLyKhoHang/deleteSanPham.php?sid=<?php echo $r1['id'] ?>" class="btn btn-danger">Xóa</a>
+                    <td><a href="viewChiTietMaKhuyenMai.php?sid=<?php echo $r1['id'] ?>&key=<?php echo "" ?>">Chi tiết</a>
+
+                        <a onclick="return confirm('Xóa mã khuyến mại?')" href="../../BE/quanLyKhoHang/deleteMaKhuyenMai.php?makhuyenmai=<?php echo $r1['makhuyenmai'] ?>&link=<?php echo "viewMaKhuyenMai" ?>" class="btn btn-danger">Xóa</a>
 
                     </td>
+                </tr>
+            <?php
+            }
+            ?>
+
+        </tbody>
+    </table>
+
+    <h2>Mã khuyến mại đã dừng</h2>
+    <table class="table table-striped">
+        <thead class="thead-style">
+            <tr>
+
+                <th>Mã khuyến mại</th>
+                <th>Giảm (%)</th>
+                <th>Ngày bắt đầu</th>
+                <th>Ngày kết thúc</th>
+    
+            </tr>
+        </thead>
+        <tbody>
+
+            <?php
+
+            //ket noi csdl
+            require_once '../../../php/connect.php';
+
+
+            $view_sql1 = "SELECT * FROM thongtinkhuyenmai WHERE 
+            ((MONTH(ngayketthuc) = MONTH('$today') AND DAY(ngayketthuc) <= DAY('$today')) OR MONTH(ngayketthuc) < MONTH('$today'))
+            
+            ";
+
+
+            $result1 = mysqli_query($conn, $view_sql1);
+
+
+            while ($r1 = mysqli_fetch_assoc($result1)) {
+            ?>
+
+                <tr>
+
+                    <td><?php echo $r1['makhuyenmai'] ?></td>
+                    <td><?php echo $r1['giam'] ?></td>
+                    <td><?php echo $r1['ngaybatdau'] ?></td>
+                    <td><?php echo $r1['ngayketthuc'] ?></td>
+
                 </tr>
             <?php
             }

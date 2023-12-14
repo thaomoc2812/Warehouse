@@ -15,6 +15,11 @@ if (!$makhuyenmai || $makhuyenmai == "."||!$giam || $giam == "."||!$ngaybatdau |
     echo "Vui lòng nhập đầy đủ thông tin. <a href='javascript: history.go(-1)'>Trở lại</a>";
     exit;
 }
+
+// if (($ngaybatdau->format('m') < date("Y-m-d").'m'||($ngaybatdau->format('m') == date("Y-m-d").'m' && $ngaybatdau->format('d') < date("Y-m-d").'d'))) {
+//     echo "Thời gian áp dụng không phù hợp. <a href='javascript: history.go(-1)'>Trở lại</a>";
+//     exit;
+// }
 $search = "SELECT * FROM thongtinkhuyenmai WHERE (makhuyenmai = '$makhuyenmai') ";
 
 $query = mysqli_query($conn, $search);

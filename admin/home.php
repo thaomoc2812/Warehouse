@@ -197,7 +197,7 @@
 
       <hr>
 
-      <div class="col-sm-3"><a href="../../php/xemBaoCaoThongKe.php">
+      <div class="col-sm-3"><a href="">
           <div class="tile-stats tile-red">
 
             <div class="num" data-postfix="" data-duration="1500" data-delay="0">
@@ -233,7 +233,7 @@
       </div>
 
 
-      <div class="col-sm-3"><a href="../../php/quanLyNhanVien/viewNhanVien.php">
+      <div class="col-sm-3"><a href="">
           <div class="tile-stats tile-green">
 
             <div class="num" data-postfix="" data-duration="1500" data-delay="0">
@@ -267,7 +267,7 @@
         </a>
       </div>
 
-      <div class="col-sm-3"><a href="../../php/quanLyKhoHang/viewSanPham.php">
+      <div class="col-sm-3"><a href="">
           <div class="tile-stats tile-aqua">
 
             <div class="num" data-postfix="" data-duration="1500" data-delay="0">
@@ -292,7 +292,7 @@
         </a>
       </div>
 
-      <div class="col-sm-3"><a href="../../php/quanLyKhachHang/viewKhachHang.php">
+      <div class="col-sm-3"><a href="">
           <div class="tile-stats tile-blue">
 
             <div class="num" data-postfix="" data-duration="1500" data-delay="0">

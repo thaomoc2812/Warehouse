@@ -41,7 +41,7 @@
 
         <div class="form-group">
             <label for="ngaynhaphang">Ngày nhập hàng</label>
-            <input type="date" id="ngaynhaphang" class="form-control" name="ngaynhaphang" value = "<?php echo date("Y-m-d");?>" readonly>
+            <input type="date" id="ngaynhaphang" class="form-control" name="ngaynhaphang" value = "<?php  echo date("Y-m-d");?>" readonly>
         </div>
         <div class="form-group">
             <label for="tennhanvien">Nhân viên</label>

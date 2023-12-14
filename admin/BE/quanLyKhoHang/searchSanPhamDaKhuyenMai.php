@@ -1,6 +1,6 @@
 <?php
 //nhan du lieu tu form
-
+$link = $_GET['link'];
 $makhuyenmai = $_GET['makhuyenmai'];
 $giam = $_GET['giam'];
 $ngaybatdau = $_GET['ngaybatdau'];
@@ -18,9 +18,25 @@ function convertToNonAccent($str)
     return $str;
 }
 
+$search_sql = "SELECT * FROM thongtinkhuyenmai WHERE makhuyenmai = '$makhuyenmai'";
+$result = mysqli_query($conn, $search_sql);
+if ($r = mysqli_fetch_assoc($result))
+    $idthongtinkhuyenmai = $r['id'];
 // Sử dụng hàm
 
 $chuoiKhongDau = convertToNonAccent($key1);
+if($link == "addMaKhuyenMai")
 header("Location: ../../FE/quanLyKhoHang/addMaKhuyenMai.php?makhuyenmai=$makhuyenmai&giam=$giam&ngaybatdau=$ngaybatdau&ngayketthuc=$ngayketthuc&key1=$chuoiKhongDau&key2=$key2&key3=$key3");
 
+if ( $link == "viewChiTietMaKhuyenMai")
+{
+
+    header("Location: ../../FE/quanLyKhoHang/viewChiTietMaKhuyenMai.php?sid=$idthongtinkhuyenmai&key=$chuoiKhongDau");
+};
+
+if ( $link == "viewChiTietMaKhuyenMaiDangChay")
+{
+
+    header("Location: ../../FE/quanLyKhoHang/viewChiTietMaKhuyenMai.php?sid=$idthongtinkhuyenmai&key=$chuoiKhongDau");
+};
 ?>

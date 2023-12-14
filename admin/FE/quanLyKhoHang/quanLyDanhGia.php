@@ -1,7 +1,16 @@
 <?php include 'header.html'; ?>
 
-      <div class="container">
-        <h1>Các khiếu nại của nhân viên</h1>       
+                <div class="container">
+                  <h1>Quản lý đánh giá từ khách hàng</h1>
+    
+          
+
+              <!-- <div class="list-group">
+                <a href="addDanhMuc.php" class="list-group-item">Thêm danh mục</a>
+                <a href="viewDanhMuc.php" class="list-group-item">Xem danh sách danh mục</a>
+              
+              </div> -->
+                   
             <table class="table table-striped">
                 <thead class="thead-style">
                 <tr>
@@ -12,7 +21,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
+                    <tr>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -38,7 +47,7 @@
         color: white;
     }
     </style>
+
+
 </body>
 </html>
-
-

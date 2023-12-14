@@ -40,7 +40,7 @@
                         while ($r_sl = mysqli_fetch_assoc($result_sl)) {
                          
                             $total += $r_sl['soluong'];}
-                if($total < 30)
+                if($total < 31)
                 {
             ?>
 

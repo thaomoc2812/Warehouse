@@ -55,11 +55,11 @@ function tinhLai($gianhapvao, $giabanra, $giam)
 
     </form>
     <a href="quanLyKhuyenMai.php" class="btn btn-info">Hoàn tất</a>
-    <a href="../../BE/quanLyKhoHang/deleteMaKhuyenMai.php?makhuyenmai=<?php echo $makhuyenmai ?>" class="btn btn-danger">Hủy mã khuyến mại</a>
+    <a href="../../BE/quanLyKhoHang/deleteMaKhuyenMai.php?makhuyenmai=<?php echo $makhuyenmai ?>&link=<?php echo "quanLyMaKhuyenMai"?>" class="btn btn-danger">Hủy mã khuyến mại</a>
     
 
     <div>
-    <form action="../../BE/quanLyKhoHang/searchSanPhamDaKhuyenMai.php?makhuyenmai=<?php echo $makhuyenmai ?>&giam=<?php echo $giam ?>&ngaybatdau=<?php echo $ngaybatdau ?>&ngayketthuc=<?php echo $ngayketthuc ?>" method="post">
+    <form action="../../BE/quanLyKhoHang/searchSanPhamDaKhuyenMai.php?makhuyenmai=<?php echo $makhuyenmai ?>&giam=<?php echo $giam ?>&ngaybatdau=<?php echo $ngaybatdau ?>&ngayketthuc=<?php echo $ngayketthuc ?>&link=<?php echo "addMaKhuyenMai" ?>" method="post">
         <label>Các sản phẩm đã thêm mã khuyến mại</label>
         <input type="text" placeholder="Nhập mã sản phẩm" id="key1" name="key1">
         <button type="submit" class="btn btn-info">Tìm</button><br>
@@ -139,7 +139,7 @@ function tinhLai($gianhapvao, $giabanra, $giam)
                         <td><?php echo number_format($lai1, 0, '.', '.') ?></td>
                         <td>
 
-                            <a onclick="return confirm('Xác nhận xóa mã giảm giá cho mặt hàng này?')" href="../../BE/quanLyKhoHang/deleteMaKhuyenMaiSanPham.php?idsoluong=<?php echo $r_soluong['id'] ?>&makhuyenmai=<?php echo $makhuyenmai ?>&giam=<?php echo $giam ?>&ngaybatdau=<?php echo $ngaybatdau ?>&ngayketthuc=<?php echo $ngayketthuc ?>&key1=<?php echo "" ?>&key2=<?php echo "" ?>&key3=<?php echo "" ?>" class="btn btn-danger">Xóa</a>
+                            <a onclick="return confirm('Xác nhận xóa mã giảm giá cho mặt hàng này?')" href="../../BE/quanLyKhoHang/deleteMaKhuyenMaiSanPham.php?idsoluong=<?php echo $r_soluong['id'] ?>&makhuyenmai=<?php echo $makhuyenmai ?>&giam=<?php echo $giam ?>&ngaybatdau=<?php echo $ngaybatdau ?>&ngayketthuc=<?php echo $ngayketthuc ?>&key1=<?php echo "" ?>&key2=<?php echo "" ?>&key3=<?php echo "" ?>&link=<?php echo "addMaKhuyenMai" ?>" class="btn btn-danger">Xóa</a>
 
                         </td>
                     </tr>
@@ -156,7 +156,7 @@ function tinhLai($gianhapvao, $giabanra, $giam)
    
     <div>
     <form action="../../BE/quanLyKhoHang/searchSanPhamTonKhoChuaKhuyenMai.php?makhuyenmai=<?php echo $makhuyenmai ?>&giam=<?php echo $giam ?>&ngaybatdau=<?php echo $ngaybatdau ?>&ngayketthuc=<?php echo $ngayketthuc ?>" method="post">
-    <label>Các sản phẩm tồn kho chưa thêm mã khuyến mại</label>
+    <label>Các sản phẩm còn ít chưa thêm mã khuyến mại</label>
         <input type="text" placeholder="Nhập mã sản phẩm" id="key2" name="key2">
         <button type="submit" class="btn btn-info">Tìm</button><br>
     </form>
@@ -181,7 +181,7 @@ function tinhLai($gianhapvao, $giabanra, $giam)
 
             //ket noi csdl
 
-            $view_soluong2 = "SELECT * FROM soluong WHERE soluong < 15 AND masanpham LIKE '%$key2%' ";
+            $view_soluong2 = "SELECT * FROM soluong WHERE soluong < 20 AND masanpham LIKE '%$key2%' ";
 
             $result_soluong2 = mysqli_query($conn, $view_soluong2);
 

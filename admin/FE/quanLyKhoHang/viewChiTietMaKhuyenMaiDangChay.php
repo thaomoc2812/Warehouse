@@ -38,7 +38,7 @@ function tinhLai($gianhapvao, $giabanra, $giam)
     <h2 style ="background-color: black;color: white;"><?php echo $makhuyenmai ?> : giảm <?php echo $giam?>% ( Từ <?php echo $ngaybatdau?> đến <?php echo $ngayketthuc?>)</h2>
    
     <div>
-    <form action="../../BE/quanLyKhoHang/searchSanPhamDaKhuyenMai.php?makhuyenmai=<?php echo $makhuyenmai ?>&giam=<?php echo $giam ?>&ngaybatdau=<?php echo $ngaybatdau ?>&ngayketthuc=<?php echo $ngayketthuc ?>&link=<?php echo "viewChiTietMaKhuyenMai" ?>" method="post">
+    <form action="../../BE/quanLyKhoHang/searchSanPhamDaKhuyenMai.php?makhuyenmai=<?php echo $makhuyenmai ?>&giam=<?php echo $giam ?>&ngaybatdau=<?php echo $ngaybatdau ?>&ngayketthuc=<?php echo $ngayketthuc ?>&link=<?php echo "viewChiTietMaKhuyenMaiDangChay" ?>" method="post">
         <label >Các sản phẩm đã thêm mã khuyến mại</label>
         <input type="text" placeholder="Nhập mã sản phẩm" id="key1" name="key1">
         <button type="submit" class="btn btn-info">Tìm</button><br>
@@ -56,7 +56,7 @@ function tinhLai($gianhapvao, $giabanra, $giam)
                 <th>Kích thước</th>
                 <th>Số lượng</th>
                 <th>Lãi mỗi sản phẩm</th>
-                <th>Thao tác</th>
+
             </tr>
         </thead>
         <tbody>
@@ -113,11 +113,7 @@ function tinhLai($gianhapvao, $giabanra, $giam)
                         $lai1 = tinhLai($gianhapvao1,$r_soluong['giabanra'],$giam);
                         ?>
                         <td><?php echo number_format($lai1, 0, '.', '.') ?></td>
-                        <td>
 
-                            <a onclick="return confirm('Xác nhận xóa mã giảm giá cho mặt hàng này?')" href="../../BE/quanLyKhoHang/deleteMaKhuyenMaiSanPham.php?idsoluong=<?php echo $r_soluong['id'] ?>&makhuyenmai=<?php echo $makhuyenmai ?>&giam=<?php echo $giam ?>&ngaybatdau=<?php echo $ngaybatdau ?>&ngayketthuc=<?php echo $ngayketthuc ?>&key1=<?php echo "" ?>&key2=<?php echo "" ?>&key3=<?php echo "" ?>&link=<?php echo "viewChiTietMaKhuyenMai" ?>" class="btn btn-danger">Xóa</a>
-
-                        </td>
                     </tr>
             <?php
                 }

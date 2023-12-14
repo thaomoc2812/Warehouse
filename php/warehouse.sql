@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 13, 2023 lúc 04:49 PM
+-- Thời gian đã tạo: Th12 14, 2023 lúc 01:48 AM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.0.28
 
@@ -74,7 +74,8 @@ INSERT INTO `danhmucsanpham` (`id`, `tendanhmuc`, `idphanloai`) VALUES
 (16, 'Set váy dạ', 10),
 (17, 'Đồ ngủ mùa hè', 11),
 (18, 'Đồ ngủ mùa đông', 11),
-(21, 'Khác', 1);
+(21, 'Khác', 1),
+(23, 'Váy dự tiệc', 13);
 
 -- --------------------------------------------------------
 
@@ -127,7 +128,9 @@ INSERT INTO `hinhanhsanpham` (`id`, `idsanpham`, `hinhanhchinh`, `hinhanhphu1`, 
 (2, 2, 'babytee.jpg', 'babytee.jpg', 'babytee.jpg', 'babytee.jpg'),
 (3, 3, '1.jpg', '1.jpg', '1.jpg', '1.jpg'),
 (4, 4, 'phong.jpg', 'phong.jpg', 'phong.jpg', 'phong.jpg'),
-(5, 5, 'yem.jpg', 'yem.jpg', 'yem.jpg', 'yem.jpg');
+(5, 5, 'yem.jpg', 'yem.jpg', 'yem.jpg', 'yem.jpg'),
+(6, 6, 'dongu.jpg', 'dongu.jpg', 'dongu.jpg', 'dongu.jpg'),
+(7, 7, 'jean.jpg', 'jean.jpg', 'jean.jpg', 'jean.jpg');
 
 -- --------------------------------------------------------
 
@@ -169,11 +172,13 @@ CREATE TABLE `khuyenmai` (
 --
 
 INSERT INTO `khuyenmai` (`id`, `makhuyenmai`, `idsoluong`, `masanpham`) VALUES
-(16, 'KM02', 8, 'SP02'),
-(17, 'KM02', 6, 'SP02'),
-(18, 'KM02', 1, 'SP03'),
-(21, 'KM01', 7, 'SP02'),
-(22, 'KM01', 2, 'SP03');
+(25, 'KM01', 5, 'SP02'),
+(26, 'KM01', 9, 'SP01'),
+(27, 'KM02', 1, 'SP03'),
+(28, 'KM02', 6, 'SP02'),
+(30, 'KM03', 7, 'SP02'),
+(32, 'KM04', 2, 'SP03'),
+(33, 'KM04', 8, 'SP02');
 
 -- --------------------------------------------------------
 
@@ -207,7 +212,9 @@ CREATE TABLE `lohang` (
 
 INSERT INTO `lohang` (`id`, `malohang`, `ngaynhaphang`, `idnhanvien`, `idnhacungcap`) VALUES
 (23, 'lohang1212', '2023-12-12', 0, 1),
-(25, 'lohang1213', '2023-12-13', 0, 2);
+(25, 'lohang1213', '2023-12-13', 0, 2),
+(26, 'lohang1412', '2023-12-14', 0, 3),
+(27, 'lotep1412', '2023-12-14', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -242,7 +249,8 @@ CREATE TABLE `nhacungcap` (
 
 INSERT INTO `nhacungcap` (`id`, `manhacungcap`, `tennhacungcap`, `sdt`, `diachi`, `trangthai`) VALUES
 (1, 'teplinhhiep', 'Tép', '0111222333', 'Linh Hiệp, Hà Nội', 1),
-(2, 'phuonganh', 'Phương Anh', '0444555666', 'Vĩnh Phúc', 1);
+(2, 'phuonganh', 'Phương Anh', '0444555666', 'Vĩnh Phúc', 1),
+(3, 'jmstudio', 'J & M studio', '0555777999', 'Linh Hiệp, Hà Nội', 1);
 
 -- --------------------------------------------------------
 
@@ -404,7 +412,9 @@ INSERT INTO `sanpham` (`id`, `masanpham`, `tensanpham`, `idthongtinsanpham`) VAL
 (2, 'SP01', 'Áo babytee chữ', 2),
 (3, 'SP02', 'Quần short vải có khóa', 3),
 (4, 'SP03', 'Áo phông chữ Hot Memato', 4),
-(5, 'SP04', 'Yếm bò kèm áo', 5);
+(5, 'SP04', 'Yếm bò kèm áo', 5),
+(6, 'SP05', 'Đồ ngủ họa tiết dễ thương', 6),
+(7, 'SP06', 'Quần Jean ống đứng', 7);
 
 -- --------------------------------------------------------
 
@@ -435,7 +445,13 @@ INSERT INTO `soluong` (`id`, `idsanpham`, `masanpham`, `mausac`, `kichthuoc`, `g
 (8, 3, 'SP02', 'Xanh', 'M', 160000, 10),
 (9, 2, 'SP01', 'Trắng', 'Freesize', 150000, 50),
 (10, 2, 'SP01', 'Đen', 'Freesize', 150000, 50),
-(12, 5, 'SP04', 'Bò', 'Freesize', 170000, 20);
+(12, 5, 'SP04', 'Bò', 'Freesize', 170000, 20),
+(14, 6, 'SP05', 'Họa tiết cam', 'Freesize', 150000, 15),
+(15, 6, 'SP05', 'Họa tiết dâu', 'Freesize', 150000, 5),
+(16, 6, 'SP05', 'Họa tiết dứa', 'Freesize', 150000, 5),
+(18, 7, 'SP06', 'Xanh', 'S', 0, 10),
+(19, 7, 'SP06', 'Xanh', 'M', 0, 10),
+(20, 7, 'SP06', 'Xanh', 'L', 0, 10);
 
 -- --------------------------------------------------------
 
@@ -460,17 +476,18 @@ CREATE TABLE `thongtinkhuyenmai` (
   `makhuyenmai` varchar(50) NOT NULL,
   `giam` int(11) NOT NULL,
   `ngaybatdau` date NOT NULL,
-  `ngayketthuc` date NOT NULL,
-  `trangthai` int(11) NOT NULL
+  `ngayketthuc` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `thongtinkhuyenmai`
 --
 
-INSERT INTO `thongtinkhuyenmai` (`id`, `makhuyenmai`, `giam`, `ngaybatdau`, `ngayketthuc`, `trangthai`) VALUES
-(20, 'KM02', 10, '2023-12-13', '2023-12-14', 0),
-(22, 'KM01', 10, '2023-12-14', '2023-12-15', 0);
+INSERT INTO `thongtinkhuyenmai` (`id`, `makhuyenmai`, `giam`, `ngaybatdau`, `ngayketthuc`) VALUES
+(25, 'KM01', 10, '2023-12-11', '2023-12-12'),
+(26, 'KM02', 20, '2023-12-16', '2023-12-17'),
+(27, 'KM03', 10, '2023-12-21', '2023-12-23'),
+(28, 'KM04', 5, '2023-12-13', '2023-12-15');
 
 -- --------------------------------------------------------
 
@@ -501,7 +518,13 @@ INSERT INTO `thongtinlohang` (`id`, `gianhapvao`, `idlohang`, `masanpham`, `maus
 (14, 100000, 23, 'SP02', 'Xanh', 'M', 10),
 (15, 90000, 23, 'SP01', 'Trắng', 'Freesize', 50),
 (16, 90000, 23, 'SP01', 'Đen', 'Freesize', 50),
-(20, 140000, 25, 'SP04', 'Bò', 'Freesize', 20);
+(20, 140000, 25, 'SP04', 'Bò', 'Freesize', 20),
+(21, 90000, 26, 'SP05', 'Họa tiết cam', 'Freesize', 15),
+(22, 90000, 26, 'SP05', 'Họa tiết dâu', 'Freesize', 5),
+(23, 90000, 26, 'SP05', 'Họa tiết dứa', 'Freesize', 5),
+(24, 125000, 27, 'SP06', 'Xanh', 'S', 10),
+(25, 125000, 27, 'SP06', 'Xanh', 'M', 10),
+(26, 125000, 27, 'SP06', 'Xanh', 'L', 10);
 
 -- --------------------------------------------------------
 
@@ -524,7 +547,9 @@ INSERT INTO `thongtinsanpham` (`id`, `masanpham`, `iddanhmuc`, `mota`) VALUES
 (2, 'SP01', 10, 'Áo freesize dưới 65kg'),
 (3, 'SP02', 11, 'Quần dài 40 - 50 cm'),
 (4, 'SP03', 10, 'Áo freesize dưới 65kg'),
-(5, 'SP04', 15, 'Freesize dưới 1m7, dưới 70kg');
+(5, 'SP04', 15, 'Freesize dưới 1m7, dưới 70kg'),
+(6, 'SP05', 17, 'Freesize dưới 65kg'),
+(7, 'SP06', 12, 'Quần có 3 size');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -716,7 +741,7 @@ ALTER TABLE `dangkycalam`
 -- AUTO_INCREMENT cho bảng `danhmucsanpham`
 --
 ALTER TABLE `danhmucsanpham`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT cho bảng `donhang`
@@ -734,7 +759,7 @@ ALTER TABLE `hangkhuyenmai`
 -- AUTO_INCREMENT cho bảng `hinhanhsanpham`
 --
 ALTER TABLE `hinhanhsanpham`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT cho bảng `khachhang`
@@ -746,7 +771,7 @@ ALTER TABLE `khachhang`
 -- AUTO_INCREMENT cho bảng `khuyenmai`
 --
 ALTER TABLE `khuyenmai`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT cho bảng `kichthuoc`
@@ -758,7 +783,7 @@ ALTER TABLE `kichthuoc`
 -- AUTO_INCREMENT cho bảng `lohang`
 --
 ALTER TABLE `lohang`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT cho bảng `mausac`
@@ -770,7 +795,7 @@ ALTER TABLE `mausac`
 -- AUTO_INCREMENT cho bảng `nhacungcap`
 --
 ALTER TABLE `nhacungcap`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT cho bảng `nhanvien`
@@ -794,7 +819,7 @@ ALTER TABLE `nhomquyen`
 -- AUTO_INCREMENT cho bảng `phanloaisanpham`
 --
 ALTER TABLE `phanloaisanpham`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT cho bảng `phanquyen`
@@ -812,13 +837,13 @@ ALTER TABLE `quyentruycap`
 -- AUTO_INCREMENT cho bảng `sanpham`
 --
 ALTER TABLE `sanpham`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT cho bảng `soluong`
 --
 ALTER TABLE `soluong`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT cho bảng `soluongtonkho`
@@ -830,19 +855,19 @@ ALTER TABLE `soluongtonkho`
 -- AUTO_INCREMENT cho bảng `thongtinkhuyenmai`
 --
 ALTER TABLE `thongtinkhuyenmai`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT cho bảng `thongtinlohang`
 --
 ALTER TABLE `thongtinlohang`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT cho bảng `thongtinsanpham`
 --
 ALTER TABLE `thongtinsanpham`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
